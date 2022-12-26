@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 
 class AccountMoveReversalInherit(models.TransientModel):
@@ -8,4 +9,4 @@ class AccountMoveReversalInherit(models.TransientModel):
     
     
     def create(self, vals):
-        raise "Error al crear"
+        raise UserError("Error al crear")
