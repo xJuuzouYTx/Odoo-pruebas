@@ -2,6 +2,9 @@
 
 from odoo import models, fields, api
 from odoo.exceptions import UserError
+import logging
+_logger = logging.getLogger(__name__)
+
     
 class AccountMoveReversalInherit(models.TransientModel):
     _inherit = 'account.move.reversal'
@@ -9,7 +12,7 @@ class AccountMoveReversalInherit(models.TransientModel):
     # Campos del modelo heredado
     @api.model
     def create(self, vals):
-        print("********************************", self)
+        _logger.info("********************************", self)
         # Ejecute la acción deseada antes de crear el nuevo registro
         #result = super(AccountMoveReversalInherit, self).create(vals)
         
