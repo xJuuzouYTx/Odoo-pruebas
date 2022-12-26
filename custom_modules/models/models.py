@@ -6,11 +6,8 @@ import odoo
 
 # Iniciar sesión en Odoo
 with odoo.api.Environment.manage():
-    # Buscar el diario de ventas que utilizas para las facturas rectificativas
-    journal = odoo.env['account.journal'].search([('type', '=', 'sale_refund')])
-
-    # Buscar el diario de ventas que utilizas para las facturas rectificativas
-    journal = odoo.env['account.journal'].search([('type', '=', 'sale_refund')])
+    
+    journal = odoo.api.Environment.env['account.journal'].search([('type', '=', 'sale_refund')])
 
     # Cambiar la cuenta de ingreso utilizada en el diario de ventas
     journal.default_credit_account_id = ID_DE_LA_CUENTA_4175
