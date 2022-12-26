@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError
     
-class AccountMoveReversalInherit(models.Model):
+class AccountMoveReversalInherit(models.TransientModel):
     _inherit = 'account.move.reversal'
 
     # Campos del modelo heredado
