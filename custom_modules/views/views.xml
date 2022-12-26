@@ -15,14 +15,19 @@
     </record>
 -->
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="custom_modules.action_window">
-      <field name="name">custom_modules window</field>
-      <field name="res_model">custom_modules.custom_modules</field>
+    <!-- acccion para la vista de contabilidad-->
+
+    <record model="ir.actions.act_window" id="custom_modules_accounting_config">
+      <field name="name">Redireccion de cuentas</field>
+      <field name="res_model">custom_modules.account.redirect</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
+
+    <menuitem
+      id="custom_modules_menu_acconting_config"
+      name="Configuración de accounting"
+      action="custom_modules_accounting_config"
+      sequence="10"/>
 
     <!-- server action to the one above -->
 <!--

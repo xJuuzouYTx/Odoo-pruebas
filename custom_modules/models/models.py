@@ -70,4 +70,9 @@ class AccountMoveReversalInherit(models.TransientModel):
             if len(set(moves_to_redirect.mapped('move_type'))) == 1:
                 action['context'] = {'default_move_type':  moves_to_redirect.mapped('move_type').pop()}
         return action
-        
+    
+class AccountRedirect(models.Model):
+    _name = 'custom_modules.account.redirect'
+
+    account_origin_id = fields.Many2one('account.account', string='Account')
+    account_destination_id = fields.Many2one('account.account', string='Account')
