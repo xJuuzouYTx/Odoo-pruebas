@@ -46,7 +46,7 @@ class AccountMoveReversalInherit(models.TransientModel):
             moves_to_redirect |= new_moves
 
         self.new_move_ids = moves_to_redirect
-        raise UserError(len(self.new_move_ids))
+        raise UserError(self.new_move_ids.move_type)
 
         # Create action.
         action = {
