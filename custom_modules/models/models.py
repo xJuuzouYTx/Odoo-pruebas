@@ -46,6 +46,7 @@ class AccountMoveReversalInherit(models.TransientModel):
             moves_to_redirect |= new_moves
 
         self.new_move_ids = moves_to_redirect
+        _logger.debug(self.new_move_ids)
 
         # Create action.
         action = {
@@ -53,6 +54,7 @@ class AccountMoveReversalInherit(models.TransientModel):
             'type': 'ir.actions.act_window',
             'res_model': 'account.move',
         }
+
         if len(moves_to_redirect) == 1:
             action.update({
                 'view_mode': 'form',
