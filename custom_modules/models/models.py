@@ -2,6 +2,8 @@
 
 from odoo import models, fields, api
 from odoo.exceptions import UserError
+import json 
+
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -16,6 +18,6 @@ class AccountMoveReversalInherit(models.TransientModel):
         # Ejecute la acción deseada antes de crear el nuevo registro
         #result = super(AccountMoveReversalInherit, self).create(vals)
         
-        raise UserError(vals)
+        raise UserError(json.dumps(vals))
         # Ejecute la acción deseada después de crear el nuevo registro
         return result
