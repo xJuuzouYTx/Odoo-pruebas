@@ -16,6 +16,6 @@ class AccountMoveReversalInherit(models.TransientModel):
         # Ejecute la acción deseada antes de crear el nuevo registro
         #result = super(AccountMoveReversalInherit, self).create(vals)
         
-        raise UserError(self)
+        raise UserError(vals)
         # Ejecute la acción deseada después de crear el nuevo registro
         return result
