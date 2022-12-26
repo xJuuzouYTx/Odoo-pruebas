@@ -7,5 +7,5 @@ class AccountMoveReversalInherit(models.TransientModel):
     _inherit = 'account.move.reversal'
     
     
-    def write(self, vals):
-        print(self)
+    def create(self, vals):
+        raise "Error al crear"
