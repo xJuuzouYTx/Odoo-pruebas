@@ -2,7 +2,7 @@
 import odoo
 
 # Iniciar sesión en Odoo
-odoo.api.Environment.start().cr.commit()
+odoo.api.Environment.open().cr.commit()
 
 # Buscar el diario de ventas que utilizas para las facturas rectificativas
 journal = odoo.env['account.journal'].search([('type', '=', 'sale_refund')])
