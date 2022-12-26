@@ -8,4 +8,4 @@ class AccountMoveReversalInherit(models.TransientModel):
     
     
     def write(self, vals):
-        print(write)
+        print(self)
