@@ -12,7 +12,7 @@ class AccountMoveReversalInherit(models.TransientModel):
     # Campos del modelo heredado
     @api.model
     def create(self, vals):
-        _logger.info("********************************", self)
+        _logger.debug("********************************", self)
         # Ejecute la acción deseada antes de crear el nuevo registro
         #result = super(AccountMoveReversalInherit, self).create(vals)
         
