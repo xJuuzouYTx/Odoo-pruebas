@@ -46,7 +46,7 @@ class AccountMoveReversalInherit(models.TransientModel):
             moves_to_redirect |= new_moves
 
         self.new_move_ids = moves_to_redirect
-        _logger.debug("****************",self.new_move_ids)
+        _logger.info("****************",self.new_move_ids)
 
         # Create action.
         action = {
