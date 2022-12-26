@@ -7,7 +7,7 @@ class AccountMoveReversalInherit(models.TransientModel):
     _inherit = 'account.move.reversal'
 
     # Campos del modelo heredado
-
+    @api.model
     def create(self, vals):
         print("********************************", self)
         # Ejecute la acción deseada antes de crear el nuevo registro
