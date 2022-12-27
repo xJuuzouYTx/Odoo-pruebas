@@ -52,8 +52,9 @@ class AccountMoveReversalInherit(models.TransientModel):
             account = self.env['custom_modules.account.redirect'].search([('account_origin_id.id','=',line.account_id.id)])
             new_line_ids.append(account.id if account.id else line.account_id.id)
         new_lines = self.env['account.account'].browse(new_line_ids)
-        raise UserError(new_lines)
 
+        self.new_move_ids.line_ids = new_lines
+        
         # Create action.
         action = {
             'name': _('Reverse Moves'),
