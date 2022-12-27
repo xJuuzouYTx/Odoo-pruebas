@@ -124,7 +124,9 @@ class AccountRedirect(models.Model):
 
     @api.onchange('account_origin_id')
     def _onchange_account_origin_id(self):
-        self.name = self.account_origin_id.code
+        for record in self:
+            if record.account_origin_id:
+                record.name = record.account_origin_id.code
 
     @api.constrains('account_origin_id')
     def _check_unique_account_origin_id(self):
