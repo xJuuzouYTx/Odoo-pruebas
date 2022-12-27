@@ -54,7 +54,7 @@ class AccountMoveReversalInherit(models.TransientModel):
             _logger.info(self.new_move_ids.line_ids[line].account_id.code)
             _logger.info(len(record))
             #odoo.addons.custom_modules.models.models: custom_modules.account.redirect(2,)
-            _logger.info(self.env['account.account'].search([('code','=',record.account_destination_id.code if len(record) > 0 else self.new_move_ids.line_ids[line].account_id.code)]))
+            _logger.info(self.env['account.account'].search([('code','=',record.account_destination_id.code if len(record) > 0 else self.new_move_ids.line_ids[line].account_id.code)]).id)
             self.new_move_ids.line_ids[line].account_id = self.env['account.account'].search([('code','=',record.account_destination_id.code if len(record) > 0 else self.new_move_ids.line_ids[line].account_id.code)]).id
             #_logger.info("******", self.env('account.account').search([('code','=',record.code if record.id else self.new_move_ids.line_ids.account_id.code)]).id)
 
