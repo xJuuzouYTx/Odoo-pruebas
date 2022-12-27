@@ -85,6 +85,6 @@ class AccountMoveReversalInherit(models.TransientModel):
 class AccountRedirect(models.Model):
     _name = 'custom_modules.account.redirect'
 
-    account_origin_id = fields.Many2one('account.account', string='Cuenta de origen')
+    account_origin_id = fields.Many2one('account.account', string='Cuenta de origen', unique=True)
     account_destination_id = fields.Many2one('account.account', string='Cuenta de destino')
 
