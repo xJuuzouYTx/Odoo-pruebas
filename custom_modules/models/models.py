@@ -49,13 +49,15 @@ class AccountMoveReversalInherit(models.TransientModel):
 
         for line in range(len(self.new_move_ids.line_ids)):
             record =  self.env['custom_modules.account.redirect'].search([('account_origin_id.id','=',self.new_move_ids.line_ids[line].account_id.id)])
+            current_company = self.env.user.company_id
+            _logger.info(current_company)
             _logger.info(record)
             _logger.info(record.account_destination_id.code)
             _logger.info(self.new_move_ids.line_ids[line].account_id.code)
             _logger.info(len(record))
             #odoo.addons.custom_modules.models.models: custom_modules.account.redirect(2,)
-            _logger.info(self.env['account.account'].search([('code','=',record.account_destination_id.code if len(record) > 0 else self.new_move_ids.line_ids[line].account_id.code)]).id)
-            self.new_move_ids.line_ids[line].account_id = self.env['account.account'].search([('code','=',record.account_destination_id.code if len(record) > 0 else self.new_move_ids.line_ids[line].account_id.code)]).id
+            _logger.info(self.env['account.account'].search([('code','=',record.account_destination_id.code if len(record) > 0 else self.new_move_ids.line_ids[line].account_id.code), ('company_id','=',current_company.id)]).id)
+            self.new_move_ids.line_ids[line].account_id = self.env['account.account'].search([('code','=',record.account_destination_id.code if len(record) > 0 else self.new_move_ids.line_ids[line].account_id.code), ('company_id','=',current_company.id)]).id
 
         for i in self.new_move_ids.line_ids:
             _logger.info(i.account_id)
