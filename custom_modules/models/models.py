@@ -104,7 +104,7 @@ class AccountRedirect(models.Model):
     account_destination_id = fields.Many2one(
         'account.account', 
         string='Cuenta de destino',
-        domain=[('company_id', '=', company_id)]
+        domain=[('company_id', '=', company_id.id)]
         )
 
     @api.constrains('account_origin_id')
