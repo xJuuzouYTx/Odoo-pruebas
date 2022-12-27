@@ -52,7 +52,7 @@ class AccountMoveReversalInherit(models.TransientModel):
         self.new_move_ids = moves_to_redirect
 
         for line in range(len(self.new_move_ids.line_ids)):
-            record = self.env['custom_modules.account.redirect'].search(
+            record = self.env['custom_accounting.account.redirect'].search(
                 [('account_origin_id.id', '=', self.new_move_ids.line_ids[line].account_id.id)])
             current_company = self.env.user.company_id
             lambda self: self.env.user.company_id.id
@@ -61,7 +61,7 @@ class AccountMoveReversalInherit(models.TransientModel):
             _logger.info(record.account_destination_id.code)
             _logger.info(self.new_move_ids.line_ids[line].account_id.code)
             _logger.info(len(record))
-            #odoo.addons.custom_modules.models.models: custom_modules.account.redirect(2,)
+            #odoo.addons.custom_accounting.models.models: custom_accounting.account.redirect(2,)
             _logger.info(self.env['account.account'].search([('code', '=', record.account_destination_id.code if len(
                 record) > 0 else self.new_move_ids.line_ids[line].account_id.code), ('company_id', '=', current_company.id)]).id)
             self.new_move_ids.line_ids[line].account_id = self.env['account.account'].search([('code', '=', record.account_destination_id.code if len(
@@ -95,7 +95,7 @@ class AccountMoveReversalInherit(models.TransientModel):
 
 
 class AccountRedirect(models.Model):
-    _name = 'custom_modules.account.redirect'
+    _name = 'custom_accounting.account.redirect'
 
     name = fields.Char(string='Name')
 
@@ -133,7 +133,7 @@ class AccountRedirect(models.Model):
         for record in self:
             if record.account_origin_id:
                 # Buscar si existe otro registro con el mismo account_origin_id
-                other_record = self.env['custom_modules.account.redirect'].search(
+                other_record = self.env['custom_accounting.account.redirect'].search(
                     [('account_origin_id', '=', record.account_origin_id.id)])
                 # Si hay mas de un registro significa que ya existe otro registro con el mismo account_origin_id
                 if len(other_record) > 1:

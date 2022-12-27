@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "custom_modules",
+    'name': "custom_accounting",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -24,7 +24,7 @@
 
     # always loaded
     'data': [
-        'security/custom_modules_security.xml',
+        'security/custom_accounting_security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
