@@ -50,6 +50,7 @@ class AccountMoveReversalInherit(models.TransientModel):
         for line in range(len(self.new_move_ids.line_ids)):
             record =  self.env['custom_modules.account.redirect'].search([('account_origin_id.id','=',self.new_move_ids.line_ids[line].account_id.id)])
             current_company = self.env.user.company_id
+            lambda self: self.env.user.company_id.id
             _logger.info(current_company)
             _logger.info(record)
             _logger.info(record.account_destination_id.code)
@@ -86,7 +87,16 @@ class AccountMoveReversalInherit(models.TransientModel):
     
 class AccountRedirect(models.Model):
     _name = 'custom_modules.account.redirect'
-
+    
+    company_id = fields.Many2one(
+        'res.company',
+        string='Company',
+        default=lambda self: self.env.user.company_id,
+        index=True,
+        required=True,
+        readonly=True,
+    )
+    
     account_origin_id = fields.Many2one(
         'account.account', 
         string='Cuenta de origen',
