@@ -111,6 +111,8 @@ class AccountRedirect(models.Model):
         required=True
     )
 
+    name = fields.Char(default=account_origin_id.code)
+
     @api.constrains('account_origin_id')
     def _check_unique_account_origin_id(self):
         for record in self:
