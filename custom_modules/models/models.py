@@ -93,7 +93,7 @@ class AccountRedirect(models.Model):
         for record in self:
             if record.account_origin_id:
                 # Buscar si existe otro registro con el mismo account_origin_id
-                other_record = self.search(['account_origin_id','=',record.account_origin_id.id])
+                other_record = self.search([('account_origin_id','=',record.account_origin_id.id)])
                 #Si hay mas de un registro significa que ya existe otro registro con el mismo account_origin_id
                 if len(other_record) > 1:
                     raise ValidationError("Ya existe un registro con esta cuenta de origen. Por favor elige otra.")
