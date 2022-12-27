@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tools.translate import _
 import json
 
@@ -85,6 +85,16 @@ class AccountMoveReversalInherit(models.TransientModel):
 class AccountRedirect(models.Model):
     _name = 'custom_modules.account.redirect'
 
-    account_origin_id = fields.Many2one('account.account', string='Cuenta de origen', unique=True)
+    account_origin_id = fields.Many2one('account.account', string='Cuenta de origen')
     account_destination_id = fields.Many2one('account.account', string='Cuenta de destino')
+
+    @api.constrains('account_origin_id')
+    def _check_unique_account_origin_id(self):
+        for record in self:
+            if record.account_origin_id:
+                # Buscar si existe otro registro con el mismo account_origin_id
+                other_record = self.search(['account_origin_id','=',record.account_origin_id.id])
+                #Si hay mas de un registro significa que ya existe otro registro con el mismo account_origin_id
+                if len(other_record) > 1:
+                    raise ValidationError("Ya existe un registro con esta cuenta de origen. Por favor elige otra.")
 
