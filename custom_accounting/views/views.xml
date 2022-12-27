@@ -42,7 +42,7 @@
 
     <menuitem
       id="custom_accounting_menu_acconting_config"
-      name="Configuración de accounting"
+      name="Custom accounting"
       action="custom_accounting_accounting_config"
       sequence="10" />
 
