@@ -99,13 +99,14 @@ class AccountRedirect(models.Model):
 
     account_origin_id = fields.Many2one(
         'account.account', 
-        string='Cuenta de origen'
+        string='Cuenta de origen',
+        domain=[('company_id', '=', company_id)]
     )
 
     account_destination_id = fields.Many2one(
         'account.account', 
         string='Cuenta de destino'
-    )
+        )
 
     @api.constrains('account_origin_id')
     def _check_unique_account_origin_id(self):
