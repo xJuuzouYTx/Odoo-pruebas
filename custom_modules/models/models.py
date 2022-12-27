@@ -111,7 +111,14 @@ class AccountRedirect(models.Model):
         required=True
     )
 
-    name = fields.Char(default=account_origin_id.code)
+    @api.model
+    def _default_name(self):
+        account_origin = self.account_origin_id
+        if account_origin:
+            return account_origin.code
+        return False
+
+    name = fields.Char(default=_default_name)
 
     @api.constrains('account_origin_id')
     def _check_unique_account_origin_id(self):
