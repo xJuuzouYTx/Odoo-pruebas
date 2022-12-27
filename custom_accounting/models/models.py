@@ -54,8 +54,8 @@ class AccountMoveReversalInherit(models.TransientModel):
         for line in range(len(self.new_move_ids.line_ids)):
             record = self.env['custom_accounting.account.redirect'].search(
                 [('account_origin_id.id', '=', self.new_move_ids.line_ids[line].account_id.id)])
-            current_company = self.env.user.company_id
-            lambda self: self.env.user.company_id.id
+            current_company = self.env.company
+            
             _logger.info(current_company)
             _logger.info(record)
             _logger.info(record.account_destination_id.code)
