@@ -43,7 +43,7 @@
     <menuitem
       id="custom_accounting_menu_acconting_config"
       name="Custom accounting"
-      action="custom_accounting_accounting_config"
+      action="custom_accounting_accounting_config" 
       sequence="10" />
 
     <!-- server action to the one above -->
