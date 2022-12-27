@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_custom_modules_custom_modules,custom_modules.custom_modules,model_custom_modules_custom_modules,base.group_user,1,1,1,1
+access_custom_modules_admin,custom modules admin,model_custom_modules_account_redirect,group_custom_modules_admin,1,1,1,1
