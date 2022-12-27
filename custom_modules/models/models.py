@@ -97,7 +97,7 @@ class AccountMoveReversalInherit(models.TransientModel):
 class AccountRedirect(models.Model):
     _name = 'custom_modules.account.redirect'
 
-    name = fields.Char(string="Name", default="None")
+    name = fields.Char(string='Name')
 
     company_id = fields.Many2one(
         'res.company',
