@@ -14,6 +14,16 @@
       </field>
     </record>
 -->
+  <record model="ir.ui.view" id="model_custom_modules_account_redirect_view_list">
+    <field name="name">custom_modules.account.redirect.view.list</field>
+    <field name="model">custom_modules.account.redirect</field>
+    <field name="arch" type="xml">
+      <tree string="Cuentas">
+        <field name="account_origin_id"/>
+        <field name="account_destination_id"/>
+      </tree>
+    </field>
+  </record>
 
     <!-- acccion para la vista de contabilidad-->
 
