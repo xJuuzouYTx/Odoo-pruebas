@@ -48,8 +48,8 @@ class AccountMoveReversalInherit(models.TransientModel):
         self.new_move_ids = moves_to_redirect
 
         for line in range(len(self.new_move_ids.line_ids)):
-            account = self.env['custom_modules.account.redirect'].search([('account_origin_id.id','=',self.new_move_ids.line_ids[line].account_id.id)])
-            self.new_move_ids.line_ids[line].account_id = account.id if account.id else self.new_move_ids.line_ids.account_id.id
+            record =  self.env['custom_modules.account.redirect'].search([('account_origin_id.id','=',self.new_move_ids.line_ids[line].account_id.id)])
+            self.new_move_ids.line_ids[line].account_id = self.env('account.account').search([('code','=',record.code)]).id if record.id else self.new_move_ids.line_ids.account_id.id
         
         _logger.debug(self.new_move_ids.line_ids)
 
