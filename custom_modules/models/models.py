@@ -97,13 +97,11 @@ class AccountRedirect(models.Model):
         readonly=True,
     )
 
-    def _get_account_domain(self):
-        return [('company_id', '=', self.company_id.id)]
-
     account_origin_id = fields.Many2one(
         'account.account', 
         string='Cuenta de origen',
-        domain=_get_account_domain)
+        domain=[('company_id', '=', company_id)])
+        
     account_destination_id = fields.Many2one(
         'account.account', 
         string='Cuenta de destino',
